@@ -1,0 +1,22 @@
+{
+  "name": "chip-wifi",
+  "version": "1.0.0",
+  "description": "# Usage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deathslocus/node-chip-wifi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deathslocus/node-chip-wifi/issues"
+  },
+  "homepage": "https://github.com/deathslocus/node-chip-wifi#readme",
+  "dependencies": {
+    "hostapdjs": "git+https://github.com/deathslocus/hostapdjs.git#refractor"
+  }
+}
