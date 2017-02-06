@@ -8,7 +8,7 @@ function ChipWifi(config){
    this.config = config;
 }
 
-ChipWifi.prototype.start = function(){
+ChipWifi.prototype.start = function(cb){
    var config = this.config;
 
    var ssid = config.ssid || randomSSID(8); 
@@ -36,6 +36,7 @@ ChipWifi.prototype.start = function(){
 
    this.ssid = ssid;
    this.pass = pass;
+   cb(null, getInfo());
 }
 
 ChipWifi.prototype.stop = function(){
