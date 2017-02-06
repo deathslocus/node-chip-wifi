@@ -11,8 +11,8 @@ function ChipWifi(config){
 ChipWifi.prototype.start = function(){
    var config = this.config;
 
-   var ssid = config.ssid || randomSSID(); 
-   var pass = config.pass || randomSSID();
+   var ssid = config.ssid || randomSSID(8); 
+   var pass = config.pass || randomSSID(10);
 
    var routerIp = config.routerIp || '192.168.49.1';
    var dhcpRange = config.dhcpRange || '192.168.49.2,192.168.49.254,12h';
@@ -40,9 +40,9 @@ ChipWifi.prototype.stop = function(){
    this.host.stop();
 }
 
-var randomSSID(){
+var randomSSID = function(len){
    var id = uuid.v4();
-   return new Buffer(id).toString('base64').substring(0, 8);
+   return new Buffer(id).toString('base64').substring(0, len);
 }
 
 module.exports = ChipWifi;
