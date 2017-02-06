@@ -14,9 +14,9 @@ var start = function(iface, ssid, pass){
    });
 
    var dhcp = new dnsmasq({
-      address: '/#/' + routerIp,
-      interface: iface,
-      dhcp-range: dhcpRange
+      'address': '/#/' + routerIp,
+      'interface': iface,
+      'dhcp-range': dhcpRange
    });
    
 
