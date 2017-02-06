@@ -36,7 +36,7 @@ ChipWifi.prototype.start = function(cb){
 
    this.ssid = ssid;
    this.pass = pass;
-   cb(null, getInfo());
+   cb(null, this.getInfo());
 }
 
 ChipWifi.prototype.stop = function(){
