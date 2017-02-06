@@ -2,31 +2,47 @@ var exports = {};
 var interface = require('./lib/interface');
 var dnsmasq = require('./lib/dnsmasq');
 var hostapdjs = require('hostapdjs');
+var uuid = require('uuid');
 
-var start = function(iface, ssid, pass){
-   var routerIp = '192.168.49.1';
-   var dhcpRange = '192.168.49.2,192.168.49.254,12h';
+function ChipWifi(config){
+   this.config = config;
+}
 
-   var host = new hostapdjs({
-      interface: iface,
+ChipWifi.prototype.start = function(){
+   var config = this.config;
+
+   var ssid = config.ssid || randomSSID(); 
+   var pass = config.pass || randomSSID();
+
+   var routerIp = config.routerIp || '192.168.49.1';
+   var dhcpRange = config.dhcpRange || '192.168.49.2,192.168.49.254,12h';
+
+   this.host = new hostapdjs({
+      interface: config.interface,
       ssid: ssid,
       wpa_passphrase: pass
    });
 
-   var dhcp = new dnsmasq({
+   this.dhcp = new dnsmasq({
       'address': '/#/' + routerIp,
-      'interface': iface,
+      'interface': config.interface,
       'dhcp-range': dhcpRange
    });
    
+   interface.setup(config.interface, routerIp);
 
-   interface.setup(iface, routerIp);
-
-   dhcp.start();
-   host.start();
-
+   this.dhcp.start();
+   this.host.start();
 }
 
-exports.start = start;
+ChipWifi.prototype.stop = function(){
+   this.dhcp.stop();
+   this.host.stop();
+}
 
-module.exports = exports;
+var randomSSID(){
+   var id = uuid.v4();
+   return new Buffer(id).toString('base64').substring(0, 8);
+}
+
+module.exports = ChipWifi;
