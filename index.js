@@ -13,11 +13,16 @@ var start = function(iface, ssid, pass){
       wpa_passphrase: pass
    });
 
-   interface.setup(iface, routerIp);
-   dnsmasq.start(iface, routerIp, dhcpRange);
+   var dhcp = new dnsmasq({
+      address: '/#/' + routerIp,
+      interface: iface,
+      dhcp-range: dhcpRange
+   });
+   
 
-   host.stop();
-   host.updateConfig();
+   interface.setup(iface, routerIp);
+
+   dhcp.start();
    host.start();
 
 }

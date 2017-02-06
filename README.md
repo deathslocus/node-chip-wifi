@@ -3,6 +3,6 @@
 # Usage
 
 ```javascript
-var chipwifi = require('node-chip-wifi');
+var chipwifi = require('chip-wifi');
 chipwifi.start('wlan0', 'MYNETWORK', 'NETWORKPASSWORD');
 ```

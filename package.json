@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/deathslocus/node-chip-wifi#readme",
   "dependencies": {
-    "hostapdjs": "git+https://github.com/deathslocus/hostapdjs.git#refractor"
+    "hostapdjs": "git+https://github.com/deathslocus/hostapdjs.git#refractor",
+    "initd": "^0.1.0"
   }
 }
