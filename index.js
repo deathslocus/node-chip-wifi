@@ -33,11 +33,18 @@ ChipWifi.prototype.start = function(){
 
    this.dhcp.start();
    this.host.start();
+
+   this.ssid = ssid;
+   this.pass = pass;
 }
 
 ChipWifi.prototype.stop = function(){
    this.dhcp.stop();
    this.host.stop();
+}
+
+ChipWifi.prototype.getInfo = function(){
+   return {ssid: this.ssid, pass: this.pass};
 }
 
 var randomSSID = function(len){
