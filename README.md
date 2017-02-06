@@ -1,4 +1,8 @@
-## C.H.I.P Wifi hotspot
+## C.H.I.P Wifi thing
+
+# Purpose
+
+This module uses hostapd and dnsmasq to create a wifi access point and dhcp server. It's been designed with the C.H.I.P (https://getchip.com/) in mind. 
 
 # Usage
 
